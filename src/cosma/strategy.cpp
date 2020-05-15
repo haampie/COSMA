@@ -105,11 +105,11 @@ Strategy::Strategy(int mm,
 
 std::tuple<long long, long long, long long>
 Strategy::initial_memory(long long m, long long n, long long k, int P) {
-    return {
+    return std::make_tuple(
             math_utils::divide_and_round_up(m * k, P),
             math_utils::divide_and_round_up(k * n, P),
             math_utils::divide_and_round_up(m * n, P)
-    };
+    );
 }
 
 bool Strategy::add_step(long long& prev_m, long long& prev_n, long long& prev_k, 
@@ -275,7 +275,7 @@ maximum_memory(long long m, long long n, long long k,
             std::get<0>(dim) /= div;
         }
     }
-    return {memory_A, memory_B, memory_C};
+    return std::make_tuple(memory_A, memory_B, memory_C);
 }
 
 long long memory_with_buffer_optimization(std::vector<long long>& memory_A,
